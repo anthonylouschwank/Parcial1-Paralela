@@ -23,6 +23,7 @@ struct Opciones {
     std::string csv;                      // ruta donde acumular mediciones
     std::string etiqueta     = "base";    // nombre del experimento en el CSV
     bool        solo_frontera = false;    // secuencial: omitir el BFS de cola clasico
+    bool        detalle      = false;     // paralelo: desglose nivel por nivel
 };
 
 inline void imprimir_ayuda(const char* prog, bool paralelo) {
@@ -37,7 +38,8 @@ inline void imprimir_ayuda(const char* prog, bool paralelo) {
     if (paralelo) {
         printf("  --hilos T          hilos OpenMP            (def. omp_get_max_threads)\n");
         printf("  --scheduling S     static | dynamic | guided (def. dynamic)\n");
-        printf("  --chunk C          tamano de bloque        (def. 64)\n");
+        printf("  --chunk C          tamano de bloque, 0 = default del runtime (def. 64)\n");
+        printf("  --detalle          desglose de carga nivel por nivel\n");
     } else {
         printf("  --solo-frontera    omitir el BFS de cola clasico\n");
     }
@@ -73,6 +75,7 @@ inline Opciones parsear_opciones(int argc, char** argv, bool paralelo) {
         else if (!strcmp(a, "--csv"))          o.csv = siguiente(a);
         else if (!strcmp(a, "--etiqueta"))     o.etiqueta = siguiente(a);
         else if (!strcmp(a, "--solo-frontera")) o.solo_frontera = true;
+        else if (!strcmp(a, "--detalle"))      o.detalle = true;
         else if (!strcmp(a, "--ayuda") || !strcmp(a, "-h")) {
             imprimir_ayuda(argv[0], paralelo);
             exit(0);
