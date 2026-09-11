@@ -68,14 +68,22 @@ static ResultadoBFS bfs_cola(const Grafo& g, int64_t origen, int64_t destino,
 //  El corte anticipado se evalua AL CERRAR el nivel, no al descubrir el nodo.
 //  Es deliberado: es exactamente lo que puede hacer la version paralela, y
 //  mantenerlo aqui hace que ambas ejecuten la misma cantidad de trabajo.
+//
+//  DETALLE DE MEMORIA (importante, y medido):
+//  La marca de visitado es un uint8_t por usuario, no un int32_t. Para 2M de
+//  usuarios eso son 2 MB en vez de 8 MB. El acceso a este arreglo es ALEATORIO
+//  -- un salto por cada amistad recorrida -- asi que lo que decide el tiempo es
+//  si cabe o no en la cache L3 (6 MB en esta maquina). Con 8 MB no cabia y cada
+//  lectura iba a RAM. No hace falta guardar la distancia de cada usuario: el
+//  nivel actual ya la conoce, y para el camino basta con padre[].
 // ---------------------------------------------------------------------------
 static ResultadoBFS bfs_frontera(const Grafo& g, int64_t origen, int64_t destino,
                                  bool completo) {
     ResultadoBFS r;
     r.padre.assign((size_t)g.n, -1);
-    std::vector<int32_t> dist((size_t)g.n, -1);
+    std::vector<uint8_t> visitado((size_t)g.n, 0);
 
-    dist[(size_t)origen] = 0;
+    visitado[(size_t)origen] = 1;
     r.nodos_visitados = 1;
     if (!completo && origen == destino) { r.distancia = 0; return r; }
 
@@ -92,9 +100,9 @@ static ResultadoBFS bfs_frontera(const Grafo& g, int64_t origen, int64_t destino
             r.aristas_recorridas += gr;
             for (int64_t i = 0; i < gr; ++i) {
                 const int32_t w = ady[i];
-                if (dist[(size_t)w] < 0) {
-                    dist[(size_t)w]    = nivel + 1;
-                    r.padre[(size_t)w] = u;
+                if (!visitado[(size_t)w]) {
+                    visitado[(size_t)w] = 1;
+                    r.padre[(size_t)w]  = u;
                     siguiente.push_back(w);
                 }
             }
@@ -104,14 +112,14 @@ static ResultadoBFS bfs_frontera(const Grafo& g, int64_t origen, int64_t destino
         r.nodos_visitados += (int64_t)siguiente.size();
         r.niveles = nivel;
 
-        if (!completo && dist[(size_t)destino] >= 0) {   // corte al cerrar el nivel
-            r.distancia = dist[(size_t)destino];
+        // Todo lo descubierto en este barrido esta a distancia `nivel`.
+        if (!completo && visitado[(size_t)destino]) {   // corte al cerrar el nivel
+            r.distancia = nivel;
             return r;
         }
         frontera.swap(siguiente);
     }
-    if (!completo) r.distancia = dist[(size_t)destino];
-    return r;
+    return r;   // destino inalcanzable: distancia queda en -1
 }
 
 struct Resumen { double minimo, mediana, promedio, maximo; };
