@@ -1,6 +1,6 @@
 # Tres Punto Uno Cuatro
 
-**Consultoría HPC** — Examen Parcial 1, Computación Paralela
+Consultoría HPC — Examen Parcial 1, Computación Paralela
 
 ## Integrantes
 
@@ -13,13 +13,13 @@
 
 ## Problema 4 — Búsqueda de Ruta Mínima en Grafos
 
-Dada una red social de millones de usuarios (nodos) y sus amistades (aristas),
-encontrar el **camino más corto de conexiones** entre un Usuario X y un Usuario Y,
+Dada una red social de millones de usuarios y sus amistades,
+encontrar el camino más corto de conexiones entre un Usuario X y un Usuario Y,
 explorando los vecinos paso a paso mediante una cola de tareas pendientes.
 
-El reto no es el algoritmo en sí, sino el **desbalance de carga**: la distribución de
+El reto no es el algoritmo en sí, sino el desbalance de carga: la distribución de
 grados en una red social sigue una ley de potencias. La mayoría de usuarios tiene
-un puñado de amigos, pero unos pocos *hubs* tienen decenas de miles. Si la
+un puñado de amigos, pero unos pocos hubs tienen decenas de miles. Si la
 exploración se reparte ingenuamente, un hilo termina en microsegundos mientras otro
 se queda solo procesando las 10 000 amistades de un influencer.
 
