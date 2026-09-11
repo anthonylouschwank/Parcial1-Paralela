@@ -1,0 +1,18 @@
+# Binarios y objetos
+*.o
+*.out
+*.exe
+bin/
+build/
+
+# Ejecutables del proyecto
+secuencial/bfs_secuencial
+paralelo/bfs_paralelo
+
+# Resultados crudos de benchmarks (los consolidados sí se versionan)
+*.tmp
+*.log
+
+# Sistema
+.DS_Store
+Thumbs.db
