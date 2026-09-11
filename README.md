@@ -27,11 +27,16 @@ se queda solo procesando las 10 000 amistades de un influencer.
 
 ```
 .
-├── secuencial/   Implementación base (BFS de un solo hilo)
+├── comun/        Cabeceras compartidas: grafo CSR, generador, cronómetro, CLI
+├── secuencial/   Implementación base
 ├── paralelo/     Implementación optimizada con OpenMP
 ├── docs/         Reporte técnico, métricas, gráficas y evidencia de corridas
 └── README.md
 ```
+
+`comun/` si cada implementación generara su
+propio grafo, los tiempos no serían comparables. Ambas incluyen el mismo
+generador y la misma semilla, así que miden sobre la red idéntica.
 
 ## Entorno de desarrollo
 
@@ -44,7 +49,29 @@ se queda solo procesando las 10 000 amistades de un influencer.
 
 ## Cómo compilar y ejecutar
 
-Pendiente — se documenta al completar las implementaciones.
+Requisitos: `g++` con soporte C++17 y OpenMP (`sudo apt install build-essential`).
+
+### Versión secuencial
+
+```bash
+cd secuencial && make
+```
+
+```bash
+./bfs_secuencial --nodos 2000000 --repeticiones 5
+```
+
+Opciones principales (`--ayuda` lista todas):
+
+| Opción | Significado | Def. |
+|---|---|---|
+| `--nodos N` | usuarios en la red | 2000000 |
+| `--grado M` | amistades que trae cada usuario nuevo | 8 |
+| `--semilla S` | semilla del generador (reproducibilidad) | 314 |
+| `--origen X` / `--destino Y` | extremos de la búsqueda | `n-1` / `n-2` |
+| `--destino todos` | recorrer la red completa, sin corte anticipado | — |
+| `--repeticiones R` | corridas cronometradas | 5 |
+| `--csv ARCHIVO` | anexar mediciones para las gráficas | — |
 
 ## Documentación
 
