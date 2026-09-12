@@ -34,7 +34,7 @@ se queda solo procesando las 10 000 amistades de un influencer.
 └── README.md
 ```
 
-`comun/` si cada implementación generara su
+`comun/` existe por una razón metodológica: si cada implementación generara su
 propio grafo, los tiempos no serían comparables. Ambas incluyen el mismo
 generador y la misma semilla, así que miden sobre la red idéntica.
 
@@ -72,6 +72,40 @@ Opciones principales (`--ayuda` lista todas):
 | `--destino todos` | recorrer la red completa, sin corte anticipado | — |
 | `--repeticiones R` | corridas cronometradas | 5 |
 | `--csv ARCHIVO` | anexar mediciones para las gráficas | — |
+
+### Versión paralela
+
+```bash
+cd paralelo && make
+```
+
+```bash
+./bfs_paralelo --nodos 2000000 --hilos 8 --scheduling dynamic --chunk 16 --detalle
+```
+
+Acepta las mismas opciones que la secuencial, más:
+
+| Opción | Significado | Def. |
+|---|---|---|
+| `--hilos T` | hilos OpenMP | todos los disponibles |
+| `--scheduling S` | `static`, `dynamic` o `guided` | `dynamic` |
+| `--chunk C` | tamaño de bloque; `0` = default del runtime | 64 |
+| `--detalle` | desglose del reparto de carga nivel por nivel | — |
+
+### Verificar que ambas versiones coinciden
+
+Con la misma semilla, las dos deben reportar idéntico número de usuarios
+visitados y de amistades recorridas:
+
+```bash
+cd secuencial && ./bfs_secuencial --nodos 2000000 --destino todos --repeticiones 1 --solo-frontera; cd ../paralelo && ./bfs_paralelo --nodos 2000000 --destino todos --repeticiones 1
+```
+
+El **camino** sí puede diferir entre corridas de la versión paralela, y eso es
+correcto: cuando varios hilos descubren al mismo usuario a la vez, gana el que
+consiga el `compare-and-swap`, y es él quien queda registrado como padre. La
+*longitud* del camino nunca cambia, y `camino_valido()` comprueba en cada corrida
+que todos sus saltos sean amistades reales del grafo.
 
 ## Documentación
 
