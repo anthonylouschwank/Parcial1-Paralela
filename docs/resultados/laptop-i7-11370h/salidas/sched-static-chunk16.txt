@@ -1,0 +1,42 @@
+
+=====================================================================
+ Tres Punto Uno Cuatro  |  BFS PARALELO (OpenMP)
+=====================================================================
+  hilos          : 8   (nucleos logicos disponibles: 8)
+  scheduling     : static, chunk 16
+
+[1] Generando la red social...
+  usuarios (nodos)   : 2000000
+  amistades (aristas): 15999964
+  semilla            : 314   (identica a la corrida secuencial)
+  tiempo de armado   : 2183 ms
+  Distribucion de amistades por usuario:
+    minimo 8 | mediana 11 | promedio 16.0 | p99 84 | MAXIMO 6414
+    el 1% de usuarios mas conectados concentra el 10.5% de las amistades
+    -> razon max/mediana = 583x  (este es el desbalance a vencer)
+
+[2] Buscando la ruta minima  usuario 1999999  ->  usuario 1999998   [modo: red completa]
+
+[3] Cronometrando 7 repeticiones con 8 hilos...
+    rep 1/7 :   134.05 ms
+    rep 2/7 :   126.00 ms
+    rep 3/7 :   124.06 ms
+    rep 4/7 :   181.78 ms
+    rep 5/7 :   161.64 ms
+    rep 6/7 :   131.58 ms
+    rep 7/7 :   121.59 ms
+
+[4] Resultado de la busqueda
+  niveles explorados   : 7
+  usuarios visitados   : 2000000
+  amistades recorridas : 31999928
+  invariantes en las 7 repeticiones: ESTABLES (mismo trabajo en todas -> sin carrera)
+
+[5] Tiempos con 8 hilos
+  mediana   131.58 ms   (min   121.59 | prom   140.10 | max   181.78)
+  desbalance global de carga: 1.019x   <- reparto practicamente perfecto
+
+  >> Para el speedup, compare contra la mediana del binario secuencial
+     y contra esta misma corrida con --hilos 1.
+  >> Mediciones anexadas a: /mnt/c/Users/antho/Desktop/Parcial1-Paralela/docs/resultados/laptop-i7-11370h/mediciones.csv
+

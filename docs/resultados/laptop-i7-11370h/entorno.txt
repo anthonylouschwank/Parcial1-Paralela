@@ -1,0 +1,15 @@
+integrante: Anthony Lou Schwank
+maquina: laptop-i7-11370h
+fecha: 2026-09-11T20:29:19-06:00
+hostname: LAPTOP-46DB7QF0
+kernel: Linux 6.18.33.2-microsoft-standard-WSL2 x86_64 GNU/Linux
+distro: Ubuntu 24.04.1 LTS
+cpu: 11th Gen Intel(R) Core(TM) i7-11370H @ 3.30GHz
+nucleos_fisicos: 4
+hilos_por_nucleo: 2
+hilos_logicos: 8
+ram: 7.6Gi
+compilador: g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+nodos: 2000000
+repeticiones: 7
+enfriamiento_s: 30

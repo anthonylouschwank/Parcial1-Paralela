@@ -1,0 +1,50 @@
+
+=====================================================================
+ Tres Punto Uno Cuatro  |  BFS SECUENCIAL (1 hilo, sin OpenMP)
+=====================================================================
+
+[1] Generando la red social...
+  usuarios (nodos)   : 2000000
+  amistades (aristas): 15999964
+  memoria del CSR    : 137.3 MB
+  semilla            : 314   (grafo reproducible)
+  tiempo de armado   : 1779 ms
+  Distribucion de amistades por usuario:
+    minimo 8 | mediana 11 | promedio 16.0 | p99 84 | MAXIMO 6414
+    el 1% de usuarios mas conectados concentra el 10.5% de las amistades
+    -> razon max/mediana = 583x  (este es el desbalance a vencer)
+
+[2] Buscando la ruta minima  usuario 1999999  ->  usuario 1999998
+  amigos del origen: 8 | amigos del destino: 8
+
+[3] Cronometrando 7 repeticiones...
+    rep 1/7 :   130.48 ms
+    rep 2/7 :   136.27 ms
+    rep 3/7 :   157.56 ms
+    rep 4/7 :   138.97 ms
+    rep 5/7 :   136.24 ms
+    rep 6/7 :   137.25 ms
+    rep 7/7 :   128.78 ms
+
+[4] Resultado de la busqueda
+  grados de separacion : 5
+  camino:
+    1999999 -> 33575 -> 80 -> 1549 -> 1026140 -> 1999998
+  verificacion: VALIDO (cada salto es una amistad real del grafo)
+  niveles explorados   : 5
+  usuarios visitados   : 1988541  (99.4% de la red)
+  amistades recorridas : 12450125   <- este es el trabajo a repartir
+
+[5] Tiempos
+  BFS por frontera         mediana   136.27 ms   (min   128.78 | prom   137.93 | max   157.56)
+  BFS de cola (clasico)    mediana    37.73 ms   (min    33.82 | prom    39.12 | max    43.87)
+
+  Coherencia entre variantes: distancia 5 vs 5  ->  COINCIDEN
+  AVISO: la cola clasica es 3.6x mas rapida aqui (corta a media
+         capa). El speedup contra la frontera es ALGORITMICO;
+         el speedup REAL debe medirse contra 37.73 ms.
+
+  >> Baseline algoritmica (frontera, 1 hilo): 136.27 ms
+  >> Mejor secuencial observado            : 37.73 ms
+  >> Mediciones anexadas a: /mnt/c/Users/antho/Desktop/Parcial1-Paralela/docs/resultados/laptop-i7-11370h/mediciones.csv
+

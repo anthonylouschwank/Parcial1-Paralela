@@ -1,0 +1,43 @@
+
+=====================================================================
+ Tres Punto Uno Cuatro  |  BFS SECUENCIAL (1 hilo, sin OpenMP)
+=====================================================================
+
+[1] Generando la red social...
+  usuarios (nodos)   : 2000000
+  amistades (aristas): 15999964
+  memoria del CSR    : 137.3 MB
+  semilla            : 314   (grafo reproducible)
+  tiempo de armado   : 1690 ms
+  Distribucion de amistades por usuario:
+    minimo 8 | mediana 11 | promedio 16.0 | p99 84 | MAXIMO 6414
+    el 1% de usuarios mas conectados concentra el 10.5% de las amistades
+    -> razon max/mediana = 583x  (este es el desbalance a vencer)
+
+[2] Buscando la ruta minima  usuario 1999999  ->  usuario 1999998   [modo: red completa]
+  amigos del origen: 8 | amigos del destino: 8
+
+[3] Cronometrando 7 repeticiones...
+    rep 1/7 :   373.16 ms
+    rep 2/7 :   389.21 ms
+    rep 3/7 :   393.36 ms
+    rep 4/7 :   369.19 ms
+    rep 5/7 :   362.45 ms
+    rep 6/7 :   365.95 ms
+    rep 7/7 :   363.78 ms
+
+[4] Resultado de la busqueda
+  niveles explorados   : 7
+  usuarios visitados   : 2000000  (100.0% de la red)
+  amistades recorridas : 31999928   <- este es el trabajo a repartir
+
+[5] Tiempos
+  BFS por frontera         mediana   369.19 ms   (min   362.45 | prom   373.87 | max   393.36)
+  BFS de cola (clasico)    mediana   503.73 ms   (min   477.12 | prom   502.53 | max   522.20)
+
+  Coherencia entre variantes: 2000000 vs 2000000 usuarios visitados  ->  COINCIDEN
+
+  >> Baseline algoritmica (frontera, 1 hilo): 369.19 ms
+  >> Mejor secuencial observado            : 369.19 ms
+  >> Mediciones anexadas a: /mnt/c/Users/antho/Desktop/Parcial1-Paralela/docs/resultados/laptop-i7-11370h/mediciones.csv
+
