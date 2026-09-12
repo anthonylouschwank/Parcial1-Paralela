@@ -20,17 +20,17 @@ Red de **2 000 000 usuarios** y **15 999 964 amistades**, semilla fija.
 
 Metrica principal de escalabilidad: la version secuencial y la paralela recorren exactamente el mismo numero de amistades, asi que la comparacion es limpia.
 
-Baseline secuencial (BFS por frontera, binario sin OpenMP): **454.82 ms**.
-BFS de cola clasico, misma maquina: 566.18 ms.
+Baseline secuencial (BFS por frontera, binario sin OpenMP): **369.19 ms**.
+BFS de cola clasico, misma maquina: 503.73 ms.
 
 | Hilos | Mediana (ms) | Speedup vs. secuencial | Eficiencia | Speedup vs. 1 hilo | Eficiencia |
 |---:|---:|---:|---:|---:|---:|
-| 1 | 422.84 | 1.08x | 108% | 1.00x | 100% |
-| 2 | 254.13 | 1.79x | 89% | 1.66x | 83% |
-| 3 | 239.97 | 1.90x | 63% | 1.76x | 59% |
-| 4 | 181.51 | 2.51x | 63% | 2.33x | 58% |
-| 6 | 137.21 | 3.31x | 55% | 3.08x | 51% |
-| 8 | 164.19 | 2.77x | 35% | 2.58x | 32% |
+| 1 | 449.46 | 0.82x | 82% | 1.00x | 100% |
+| 2 | 240.40 | 1.54x | 77% | 1.87x | 93% |
+| 3 | 185.71 | 1.99x | 66% | 2.42x | 81% |
+| 4 | 156.34 | 2.36x | 59% | 2.87x | 72% |
+| 6 | 122.22 | 3.02x | 50% | 3.68x | 61% |
+| 8 | 114.86 | 3.21x | 40% | 3.91x | 49% |
 
 > Esta maquina tiene **4 nucleos fisicos**. Mas alla de ese numero los hilos comparten unidades de ejecucion (Hyper-Threading/SMT), asi que la eficiencia baja por definicion: no hay mas nucleos entre los que repartir.
 
@@ -38,19 +38,19 @@ BFS de cola clasico, misma maquina: 566.18 ms.
 
 La consulta real del enunciado. El corte anticipado hace que el trabajo dependa del nivel en que aparece el destino.
 
-Baseline secuencial (BFS por frontera, binario sin OpenMP): **168.33 ms**.
-BFS de cola clasico, misma maquina: 41.45 ms.
+Baseline secuencial (BFS por frontera, binario sin OpenMP): **136.27 ms**.
+BFS de cola clasico, misma maquina: 37.73 ms.
 
 | Hilos | Mediana (ms) | Speedup vs. secuencial | Eficiencia | Speedup vs. 1 hilo | Eficiencia |
 |---:|---:|---:|---:|---:|---:|
-| 1 | 180.29 | 0.93x | 93% | 1.00x | 100% |
-| 2 | 129.48 | 1.30x | 65% | 1.39x | 70% |
-| 3 | 89.25 | 1.89x | 63% | 2.02x | 67% |
-| 4 | 66.75 | 2.52x | 63% | 2.70x | 68% |
-| 6 | 51.36 | 3.28x | 55% | 3.51x | 59% |
-| 8 | 49.29 | 3.41x | 43% | 3.66x | 46% |
+| 1 | 156.16 | 0.87x | 87% | 1.00x | 100% |
+| 2 | 98.95 | 1.38x | 69% | 1.58x | 79% |
+| 3 | 76.92 | 1.77x | 59% | 2.03x | 68% |
+| 4 | 67.59 | 2.02x | 50% | 2.31x | 58% |
+| 6 | 58.98 | 2.31x | 39% | 2.65x | 44% |
+| 8 | 52.91 | 2.58x | 32% | 2.95x | 37% |
 
-> El mejor secuencial en este escenario no es el BFS por frontera (168.33 ms) sino el BFS de cola clasico (41.45 ms), porque puede abandonar a media capa al descubrir el destino. Contra ese, el speedup real es **0.84x**, no el de la tabla.
+> El mejor secuencial en este escenario no es el BFS por frontera (136.27 ms) sino el BFS de cola clasico (37.73 ms), porque puede abandonar a media capa al descubrir el destino. Contra ese, el speedup real es **0.71x**, no el de la tabla.
 
 > Esta maquina tiene **4 nucleos fisicos**. Mas alla de ese numero los hilos comparten unidades de ejecucion (Hyper-Threading/SMT), asi que la eficiencia baja por definicion: no hay mas nucleos entre los que repartir.
 
@@ -60,18 +60,18 @@ Esta es la respuesta directa a la pregunta del enunciado: como repartir la explo
 
 | Scheduling | Chunk | Mediana (ms) | Frente a la mejor |
 |---|---:|---:|---:|
-| static | default | 117.50 | +6.5% |
-| static | 16 | 116.82 | +5.9% |
-| static | 64 | 126.20 | +14.4% |
-| static | 256 | 113.70 | +3.1% |
-| dynamic | default | 160.55 | +45.6% |
-| dynamic | 16 | 110.30 | +0.0% |
-| dynamic | 64 | 192.38 | +74.4% |
-| dynamic | 256 | 141.85 | +28.6% |
-| guided | default | 136.97 | +24.2% |
-| guided | 16 | 187.73 | +70.2% |
-| guided | 64 | 125.73 | +14.0% |
-| guided | 256 | 123.14 | +11.6% |
+| static | default | 136.06 | +24.1% |
+| static | 16 | 121.31 | +10.6% |
+| static | 64 | 130.05 | +18.6% |
+| static | 256 | 180.34 | +64.5% |
+| dynamic | default | 140.17 | +27.8% |
+| dynamic | 16 | 109.64 | +0.0% |
+| dynamic | 64 | 112.04 | +2.2% |
+| dynamic | 256 | 112.41 | +2.5% |
+| guided | default | 119.12 | +8.6% |
+| guided | 16 | 124.33 | +13.4% |
+| guided | 64 | 117.52 | +7.2% |
+| guided | 256 | 128.78 | +17.5% |
 
 ![Scheduling](../graficas/scheduling-laptop-i7-11370h.svg)
 

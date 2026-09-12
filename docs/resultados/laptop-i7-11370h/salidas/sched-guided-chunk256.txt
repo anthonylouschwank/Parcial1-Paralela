@@ -9,7 +9,7 @@
   usuarios (nodos)   : 2000000
   amistades (aristas): 15999964
   semilla            : 314   (identica a la corrida secuencial)
-  tiempo de armado   : 2218 ms
+  tiempo de armado   : 1851 ms
   Distribucion de amistades por usuario:
     minimo 8 | mediana 11 | promedio 16.0 | p99 84 | MAXIMO 6414
     el 1% de usuarios mas conectados concentra el 10.5% de las amistades
@@ -18,13 +18,13 @@
 [2] Buscando la ruta minima  usuario 1999999  ->  usuario 1999998   [modo: red completa]
 
 [3] Cronometrando 7 repeticiones con 8 hilos...
-    rep 1/7 :   114.63 ms
-    rep 2/7 :   196.00 ms
-    rep 3/7 :   131.92 ms
-    rep 4/7 :   123.14 ms
-    rep 5/7 :   110.33 ms
-    rep 6/7 :   141.43 ms
-    rep 7/7 :   115.59 ms
+    rep 1/7 :   105.50 ms
+    rep 2/7 :   128.78 ms
+    rep 3/7 :   160.06 ms
+    rep 4/7 :   139.64 ms
+    rep 5/7 :   121.74 ms
+    rep 6/7 :   123.01 ms
+    rep 7/7 :   147.25 ms
 
 [4] Resultado de la busqueda
   niveles explorados   : 7
@@ -33,8 +33,8 @@
   invariantes en las 7 repeticiones: ESTABLES (mismo trabajo en todas -> sin carrera)
 
 [5] Tiempos con 8 hilos
-  mediana   123.14 ms   (min   110.33 | prom   133.29 | max   196.00)
-  desbalance global de carga: 1.183x   <- reparto aceptable
+  mediana   128.78 ms   (min   105.50 | prom   132.28 | max   160.06)
+  desbalance global de carga: 1.133x   <- reparto aceptable
 
   >> Para el speedup, compare contra la mediana del binario secuencial
      y contra esta misma corrida con --hilos 1.

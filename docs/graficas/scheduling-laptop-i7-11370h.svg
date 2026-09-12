@@ -4,50 +4,50 @@
 <line x1="70" y1="310.0" x2="694.0" y2="310.0" stroke="#e5e7eb"/>
 <text x="62" y="314.0" font-size="12" fill="#6b7280" text-anchor="end">0</text>
 <line x1="70" y1="258.0" x2="694.0" y2="258.0" stroke="#e5e7eb"/>
-<text x="62" y="262.0" font-size="12" fill="#6b7280" text-anchor="end">44</text>
+<text x="62" y="262.0" font-size="12" fill="#6b7280" text-anchor="end">41</text>
 <line x1="70" y1="206.0" x2="694.0" y2="206.0" stroke="#e5e7eb"/>
-<text x="62" y="210.0" font-size="12" fill="#6b7280" text-anchor="end">88</text>
+<text x="62" y="210.0" font-size="12" fill="#6b7280" text-anchor="end">83</text>
 <line x1="70" y1="154.0" x2="694.0" y2="154.0" stroke="#e5e7eb"/>
-<text x="62" y="158.0" font-size="12" fill="#6b7280" text-anchor="end">133</text>
+<text x="62" y="158.0" font-size="12" fill="#6b7280" text-anchor="end">124</text>
 <line x1="70" y1="102.0" x2="694.0" y2="102.0" stroke="#e5e7eb"/>
-<text x="62" y="106.0" font-size="12" fill="#6b7280" text-anchor="end">177</text>
+<text x="62" y="106.0" font-size="12" fill="#6b7280" text-anchor="end">166</text>
 <line x1="70" y1="50.0" x2="694.0" y2="50.0" stroke="#e5e7eb"/>
-<text x="62" y="54.0" font-size="12" fill="#6b7280" text-anchor="end">221</text>
-<rect x="78.8" y="171.9" width="34.3" height="138.1" fill="#2563eb" rx="3"/>
-<text x="96.0" y="165.9" font-size="11" fill="#374151" text-anchor="middle">117</text>
+<text x="62" y="54.0" font-size="12" fill="#6b7280" text-anchor="end">207</text>
+<rect x="78.8" y="139.4" width="34.3" height="170.6" fill="#2563eb" rx="3"/>
+<text x="96.0" y="133.4" font-size="11" fill="#374151" text-anchor="middle">136</text>
 <text x="96.0" y="326.0" font-size="11" fill="#6b7280" text-anchor="end" transform="rotate(-45 96.0 326.0)">static/def</text>
-<rect x="130.8" y="172.7" width="34.3" height="137.3" fill="#2563eb" rx="3"/>
-<text x="148.0" y="166.7" font-size="11" fill="#374151" text-anchor="middle">117</text>
+<rect x="130.8" y="157.9" width="34.3" height="152.1" fill="#2563eb" rx="3"/>
+<text x="148.0" y="151.9" font-size="11" fill="#374151" text-anchor="middle">121</text>
 <text x="148.0" y="326.0" font-size="11" fill="#6b7280" text-anchor="end" transform="rotate(-45 148.0 326.0)">static/16</text>
-<rect x="182.8" y="161.7" width="34.3" height="148.3" fill="#2563eb" rx="3"/>
-<text x="200.0" y="155.7" font-size="11" fill="#374151" text-anchor="middle">126</text>
+<rect x="182.8" y="147.0" width="34.3" height="163.0" fill="#2563eb" rx="3"/>
+<text x="200.0" y="141.0" font-size="11" fill="#374151" text-anchor="middle">130</text>
 <text x="200.0" y="326.0" font-size="11" fill="#6b7280" text-anchor="end" transform="rotate(-45 200.0 326.0)">static/64</text>
-<rect x="234.8" y="176.4" width="34.3" height="133.6" fill="#2563eb" rx="3"/>
-<text x="252.0" y="170.4" font-size="11" fill="#374151" text-anchor="middle">114</text>
+<rect x="234.8" y="83.9" width="34.3" height="226.1" fill="#2563eb" rx="3"/>
+<text x="252.0" y="77.9" font-size="11" fill="#374151" text-anchor="middle">180</text>
 <text x="252.0" y="326.0" font-size="11" fill="#6b7280" text-anchor="end" transform="rotate(-45 252.0 326.0)">static/256</text>
-<rect x="286.8" y="121.3" width="34.3" height="188.7" fill="#dc2626" rx="3"/>
-<text x="304.0" y="115.3" font-size="11" fill="#374151" text-anchor="middle">161</text>
+<rect x="286.8" y="134.3" width="34.3" height="175.7" fill="#dc2626" rx="3"/>
+<text x="304.0" y="128.3" font-size="11" fill="#374151" text-anchor="middle">140</text>
 <text x="304.0" y="326.0" font-size="11" fill="#6b7280" text-anchor="end" transform="rotate(-45 304.0 326.0)">dynamic/def</text>
-<rect x="338.8" y="180.4" width="34.3" height="129.6" fill="#dc2626" rx="3" stroke="#111827" stroke-width="2"/>
-<text x="356.0" y="174.4" font-size="11" fill="#374151" text-anchor="middle">110</text>
+<rect x="338.8" y="172.5" width="34.3" height="137.5" fill="#dc2626" rx="3" stroke="#111827" stroke-width="2"/>
+<text x="356.0" y="166.5" font-size="11" fill="#374151" text-anchor="middle">110</text>
 <text x="356.0" y="326.0" font-size="11" fill="#6b7280" text-anchor="end" transform="rotate(-45 356.0 326.0)">dynamic/16</text>
-<rect x="390.8" y="83.9" width="34.3" height="226.1" fill="#dc2626" rx="3"/>
-<text x="408.0" y="77.9" font-size="11" fill="#374151" text-anchor="middle">192</text>
+<rect x="390.8" y="169.5" width="34.3" height="140.5" fill="#dc2626" rx="3"/>
+<text x="408.0" y="163.5" font-size="11" fill="#374151" text-anchor="middle">112</text>
 <text x="408.0" y="326.0" font-size="11" fill="#6b7280" text-anchor="end" transform="rotate(-45 408.0 326.0)">dynamic/64</text>
-<rect x="442.8" y="143.3" width="34.3" height="166.7" fill="#dc2626" rx="3"/>
-<text x="460.0" y="137.3" font-size="11" fill="#374151" text-anchor="middle">142</text>
+<rect x="442.8" y="169.1" width="34.3" height="140.9" fill="#dc2626" rx="3"/>
+<text x="460.0" y="163.1" font-size="11" fill="#374151" text-anchor="middle">112</text>
 <text x="460.0" y="326.0" font-size="11" fill="#6b7280" text-anchor="end" transform="rotate(-45 460.0 326.0)">dynamic/256</text>
-<rect x="494.8" y="149.0" width="34.3" height="161.0" fill="#059669" rx="3"/>
-<text x="512.0" y="143.0" font-size="11" fill="#374151" text-anchor="middle">137</text>
+<rect x="494.8" y="160.7" width="34.3" height="149.3" fill="#059669" rx="3"/>
+<text x="512.0" y="154.7" font-size="11" fill="#374151" text-anchor="middle">119</text>
 <text x="512.0" y="326.0" font-size="11" fill="#6b7280" text-anchor="end" transform="rotate(-45 512.0 326.0)">guided/def</text>
-<rect x="546.8" y="89.4" width="34.3" height="220.6" fill="#059669" rx="3"/>
-<text x="564.0" y="83.4" font-size="11" fill="#374151" text-anchor="middle">188</text>
+<rect x="546.8" y="154.1" width="34.3" height="155.9" fill="#059669" rx="3"/>
+<text x="564.0" y="148.1" font-size="11" fill="#374151" text-anchor="middle">124</text>
 <text x="564.0" y="326.0" font-size="11" fill="#6b7280" text-anchor="end" transform="rotate(-45 564.0 326.0)">guided/16</text>
-<rect x="598.8" y="162.2" width="34.3" height="147.8" fill="#059669" rx="3"/>
-<text x="616.0" y="156.2" font-size="11" fill="#374151" text-anchor="middle">126</text>
+<rect x="598.8" y="162.7" width="34.3" height="147.3" fill="#059669" rx="3"/>
+<text x="616.0" y="156.7" font-size="11" fill="#374151" text-anchor="middle">118</text>
 <text x="616.0" y="326.0" font-size="11" fill="#6b7280" text-anchor="end" transform="rotate(-45 616.0 326.0)">guided/64</text>
-<rect x="650.8" y="165.3" width="34.3" height="144.7" fill="#059669" rx="3"/>
-<text x="668.0" y="159.3" font-size="11" fill="#374151" text-anchor="middle">123</text>
+<rect x="650.8" y="148.5" width="34.3" height="161.5" fill="#059669" rx="3"/>
+<text x="668.0" y="142.5" font-size="11" fill="#374151" text-anchor="middle">129</text>
 <text x="668.0" y="326.0" font-size="11" fill="#6b7280" text-anchor="end" transform="rotate(-45 668.0 326.0)">guided/256</text>
 <line x1="70" y1="310.0" x2="694.0" y2="310.0" stroke="#9ca3af"/>
 <text x="18" y="180.0" font-size="13" fill="#374151" text-anchor="middle" transform="rotate(-90 18 180.0)">mediana (ms)</text>
