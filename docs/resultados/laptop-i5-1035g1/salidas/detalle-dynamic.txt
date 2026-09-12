@@ -1,0 +1,51 @@
+
+=====================================================================
+ Tres Punto Uno Cuatro  |  BFS PARALELO (OpenMP)
+=====================================================================
+  hilos          : 8   (nucleos logicos disponibles: 8)
+  scheduling     : dynamic, chunk 16
+
+[1] Generando la red social...
+  usuarios (nodos)   : 2000000
+  amistades (aristas): 15999964
+  semilla            : 314   (identica a la corrida secuencial)
+  tiempo de armado   : 1592 ms
+  Distribucion de amistades por usuario:
+    minimo 8 | mediana 11 | promedio 16.0 | p99 84 | MAXIMO 6414
+    el 1% de usuarios mas conectados concentra el 10.5% de las amistades
+    -> razon max/mediana = 583x  (este es el desbalance a vencer)
+
+[2] Buscando la ruta minima  usuario 1999999  ->  usuario 1999998   [modo: red completa]
+
+[3] Cronometrando 3 repeticiones con 8 hilos...
+    rep 1/3 :   169.48 ms
+    rep 2/3 :   163.20 ms
+    rep 3/3 :   208.27 ms
+
+[4] Resultado de la busqueda
+  niveles explorados   : 7
+  usuarios visitados   : 2000000
+  amistades recorridas : 31999928
+  invariantes en las 3 repeticiones: ESTABLES (mismo trabajo en todas -> sin carrera)
+
+[5] Reparto de carga, nivel por nivel  (ultima repeticion)
+  nivel      frontera      amistades       max/hilo       min/hilo   desbal.         ms
+  0                 1              8              8              0     8.00x       0.01
+  1                 8            229            229              0     8.00x       0.02
+  2               221          13582           3262            697     1.92x       0.26
+  3             13218         660969          94753          71305     1.15x      12.93
+  4            505470       11775337        2032330         934452     1.38x      98.59
+  5           1469623       19446632        2776903        2013126     1.14x      92.18
+  6             11459         103171          14100          11140     1.09x       2.20
+
+  Lectura: desbalance = amistades del hilo mas cargado / promedio por hilo.
+           1.00x seria un reparto perfecto; cuanto mas alto, mas hilos esperando
+           en la barrera al cierre del nivel.
+
+[6] Tiempos con 8 hilos
+  mediana   169.48 ms   (min   163.20 | prom   180.32 | max   208.27)
+  desbalance global de carga: 1.230x   <- reparto aceptable
+
+  >> Para el speedup, compare contra la mediana del binario secuencial
+     y contra esta misma corrida con --hilos 1.
+
