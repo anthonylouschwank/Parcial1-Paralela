@@ -1,0 +1,38 @@
+# ============================================================================
+#  Finales de linea
+#
+#  Git for Windows trae core.autocrlf=true por defecto: al hacer checkout
+#  convierte los archivos a CRLF. Para un script de shell eso es fatal -- bash
+#  interpreta el '\r' como parte del comando y falla con errores que no dicen
+#  nada util ("$'\r': command not found"). Nos paso al correr los benchmarks
+#  desde un segundo equipo.
+#
+#  Estas reglas fuerzan LF en el arbol de trabajo sin importar el sistema
+#  operativo ni la configuracion de cada quien.
+# ============================================================================
+
+# Por defecto: Git decide si un archivo es texto y normaliza a LF en el repo.
+* text=auto eol=lf
+
+# Scripts: LF obligatorio, o no se ejecutan.
+*.sh     text eol=lf
+
+# Codigo y datos: LF tambien, para que los diffs no cambien segun el equipo.
+*.cpp    text eol=lf
+*.hpp    text eol=lf
+*.py     text eol=lf
+*.md     text eol=lf
+*.csv    text eol=lf
+*.svg    text eol=lf
+*.txt    text eol=lf
+Makefile text eol=lf
+
+# Binarios: Git no debe tocarlos nunca.
+*.png    binary
+*.jpg    binary
+*.jpeg   binary
+*.gif    binary
+*.webp   binary
+*.mp4    binary
+*.mov    binary
+*.pdf    binary
